@@ -1,0 +1,16 @@
+---
+- name: add user
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: useradd play
+       user:
+        name: play2
+        password: $6$mLM8Vyfu$qpjkS0rNiROn.eBIEoVC0fcvVifiHcexM9q7dhY1IUAbfMEmkz2BGpgrXdHCmZJY8o.A4guqqla6S8FPcHsCZ/
+        state: present
+        groups: sudo
+        shell: /bin/bash
+                     

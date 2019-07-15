@@ -1,0 +1,13 @@
+---
+- name: add user
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: service start
+       service:
+        name: ssh
+        state: started
+                     

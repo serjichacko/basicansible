@@ -1,0 +1,25 @@
+---
+- name: modify user password
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  ignore_errors: yes
+  vars:
+     - usernames:
+        - tests
+
+
+  tasks:
+    - name: check user exist
+      shell: id -u tests
+      register: user_exists
+      ignore_errors: true
+
+    - name: change password
+      user: 
+         name: tests
+         password: $6$mLM8Vyfu$qpjkS0rNiROn.eBIEoVC0fcvVifiHcexM9q7dhY1IUAbfMEmkz2BGpgrXdHCmZJY8o.A4guqqla6S8FPcHsCZ/
+         update_password: always
+      when: user_exists.rc == 0 

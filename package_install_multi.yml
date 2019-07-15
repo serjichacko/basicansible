@@ -1,0 +1,14 @@
+---
+- name: install package
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: install multiple package
+       apt:
+        name:
+                - git
+                - htop  
+                     

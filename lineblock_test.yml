@@ -1,0 +1,15 @@
+---
+- name: line insert before
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: line insert before
+       blockinfile:
+         path: /home/ansible/host
+         block: "{{ lookup('file' '/home/ansible/host') }}"
+         dest: "/home/ansible/host"
+         backup: yes
+         validate: "/usr/sbin/sshd -T -f %s"      

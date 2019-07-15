@@ -1,0 +1,12 @@
+---
+- name: line replace
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: creating file in not exist
+       file:
+               path: /home/ansible/play
+               state: touch 

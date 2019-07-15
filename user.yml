@@ -1,0 +1,15 @@
+---
+- name: add user
+  hosts: all
+  tasks:
+          - name: add user
+            remote_user: ansible
+            become: yes
+            become_method: sudo
+            user:
+                    name: play
+                    password: $6$mLM8Vyfu$qpjkS0rNiROn.eBIEoVC0fcvVifiHcexM9q7dhY1IUAbfMEmkz2BGpgrXdHCmZJY8o.A4guqqla6S8FPcHsCZ/
+                    state: present
+                    groups: sudo
+                    shell: /bin/bash
+                     

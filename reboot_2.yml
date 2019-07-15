@@ -1,0 +1,7 @@
+---
+ - name: rebooting
+   hosts: shutdown
+   tasks:
+          - name : reboot the server
+            shell: /sbin/shutdown -r now "reboot" && sleep 1
+

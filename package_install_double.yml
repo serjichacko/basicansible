@@ -1,0 +1,20 @@
+---
+- name: install package
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: true
+  tasks:
+     - name: install curl package
+       apt:
+        name: curl
+        state: installed
+
+     - name: install nginx package
+       apt:
+         name: nginx
+         state: installed
+
+
+                     

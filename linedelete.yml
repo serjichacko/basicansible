@@ -1,0 +1,13 @@
+---
+- name: line delete
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: line delete
+       lineinfile: 
+         path: /home/ansible/host
+         regexp: '^hostname='
+         state: absent

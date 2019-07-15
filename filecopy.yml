@@ -1,0 +1,12 @@
+---
+- name: copy file
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: copy file
+       copy:
+           src: /home/ansible/text.txt
+           dest: /home/ansible/

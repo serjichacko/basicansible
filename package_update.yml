@@ -1,0 +1,13 @@
+---
+- name: update package
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: update package
+       apt:
+        name: 
+        state: latest
+        update_cache: yes             

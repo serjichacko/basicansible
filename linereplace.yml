@@ -1,0 +1,14 @@
+---
+- name: line replace
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: line replace
+       replace: 
+         path: /home/ansible/host
+         regexp: '10.10.10.10'
+         replace: 20.20.20.20
+         backup: yes

@@ -1,0 +1,15 @@
+---
+- name: line block insert
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: line block insert
+       blockinfile:
+         path: /home/ansible/host
+         block: |      
+          iface eth0 inet static
+          address 192.0.2.23
+          netmask 255.255.255.0 

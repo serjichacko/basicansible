@@ -1,0 +1,8 @@
+---
+ - hosts: shutdown
+   gather_facts: no
+   become_method: sudo
+   tasks:
+       - name: shutdown
+         command: /sbin/shutdown -h now
+         sudo: yes
