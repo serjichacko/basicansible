@@ -1,0 +1,65 @@
+---
+- name: add user
+  hosts: user-server
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+     - name: install dnsutils 
+       apt:
+        name: dnsutils
+        state: installed
+                
+     - name: install vim           
+       apt:     
+        name: vim
+        state: installed
+          
+     - name: modify log 
+       replace:
+        path: /etc/ssh/sshd_config
+        regexp: '#LogLevel INFO'
+        replace: 'LogLevel VERBOSE'
+
+     - name: modify banner
+       replace:  
+        path: /etc/ssh/sshd_config
+        regexp: '#Banner none'
+        replace: 'Banner /etc/issue.net'
+
+     - name: modify sourcelist
+       replace:
+         path: /etc/apt/sources.list 
+         regexp: 'deb cdrom:'
+         replace: '#deb cdrom:'
+
+     - name: restart ssh service
+       service:
+        name: sshd
+        state: restarted
+
+     - name: create banner
+       blockinfile:
+        path: /etc/issue.net
+        block: | 
+          ######################################################
+          #             ***ATTENTION***
+          #             ######################################################
+          #
+          #                    ALERT! You are entering into a secured area!
+          #
+          #                    Your IP, Login Time, Username has been noted and has been sent to the server administrator!
+          #                    This service is restricted to authorized users only. All activities on this system are logged.
+          #                    Unauthorized access will be fully investigated and reported for strict action.
+          #
+          #                      Disconnect IMMEDIATELY if you are not an authorized user!
+          #
+          #                      ######################################################
+     
+     - name: vim edit enable
+       replace:
+        path: /usr/share/vim/vim80/defaults.vim
+        regexp: 'mouse=a'
+        replace: 'mouse=r' 
+    
