@@ -43,19 +43,19 @@
        blockinfile:
         path: /etc/issue.net
         block: | 
-          ######################################################
-          #             ***ATTENTION***
-          #             ######################################################
+                ######################################################
+          #                     ***ATTENTION***
+          #       ######################################################
           #
-          #                    ALERT! You are entering into a secured area!
+          #            ALERT! You are entering into a secured area!
           #
-          #                    Your IP, Login Time, Username has been noted and has been sent to the server administrator!
-          #                    This service is restricted to authorized users only. All activities on this system are logged.
-          #                    Unauthorized access will be fully investigated and reported for strict action.
+          #    Your IP, Login Time, Username has been noted and has been sent to the server administrator!
+          #    This service is restricted to authorized users only. All activities on this system are logged.
+          #    Unauthorized access will be fully investigated and reported for strict action.
           #
-          #                      Disconnect IMMEDIATELY if you are not an authorized user!
+          #    Disconnect IMMEDIATELY if you are not an authorized user!
           #
-          #                      ######################################################
+          # ######################################################
      
      - name: vim edit enable
        replace:
